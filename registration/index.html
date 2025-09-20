@@ -13,85 +13,125 @@
     <title>Registration | Conference Template</title>
 
 <style>
-/* ----- Párrafos en una sola columna ----- */
-body p {
-  max-width: 1600px;   /* mismo ancho que la sección de abajo */
-  width: 100%;
-  margin: 0 auto;
-  font-size: 1.1em;
+/* ----- Párrafos en una sola columna ----- *//* ----- Párrafos en una sola columna ----- */
+/* ---------- Base text width ---------- */
+/* ===== Text blocks above the two-column section ===== */
+/* ----- Párrafos arriba ----- */
+/* ===== Paragraphs above ===== *//* ---------- Paragraphs above the two-column section ---------- */
+/* ===== Paragraphs above ===== */
+body p{
+  max-width:1600px;
+  width:100%;
+  margin:0 auto;
+  font-size:1.1em;
 }
 
-/* ----- Contenedor de dos columnas ----- */
-.topics-dates {
-  display: flex;
-  gap: 0 px;
-  align-items: flex-start;
-  max-width: 1600px;   /* mismo ancho que body p */
-  margin: 0 auto;
+/* ===== Two-column layout (beats any floats) ===== */
+section.topics-dates{
+  display:flex !important;
+  align-items:flex-start;
+  gap:32px !important;
+  max-width:1600px;
+  margin:0 auto;
+  box-sizing:border-box;
 }
 
-/* ----- Anchos de cada columna interna ----- */
-.topics-dates .topics  { flex: 0 0 40%; }
-.topics-dates .dates   { flex: 0 0 30%; }
-
-/* ----- Negrillas y tabla ----- */
-strong, b, th { font-weight: 800; color: #222; }
-
-.topics-dates .topics h2,
-.topics-dates .dates h2 { color: #000; font-weight: 900; }
-
-.topics-dates table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.topics-dates th,
-.topics-dates td {
-  padding: 6px 8px;
-  border-bottom: 1px solid #ccc;
-  text-align: left;
+/* Kill any floats/positions from global CSS */
+section.topics-dates > .topics,
+section.topics-dates > .dates{
+  float:none !important;
+  position:static !important;
+  box-sizing:border-box;
 }
 
-
-.topics ul {
-  list-style: none;       /* quitamos viñetas nativas */
-  padding-left: 0;        /* sin sangría automática */
+/* RIGHT column: fixed width so it never pushes left */
+section.topics-dates > .dates{
+  flex:0 0 420px !important;
+  width:420px !important;
+  max-width:420px !important;
+  min-width:0 !important;
+  overflow:hidden;                 /* safety */
 }
 
-.topics ul li {
-  margin-bottom: 15px;    /* espacio entre temas */
-  line-height: 1.5;
-  position: relative;
-  padding-left: 20px;     /* espacio para el puntico */
+/* LEFT column: fluid; create its own BFC so it NEVER wraps under floats */
+section.topics-dates > .topics{
+  flex:1 1 auto !important;
+  min-width:0 !important;          /* allow shrinking within flex */
+  display:flow-root !important;    /* isolates from any right float */
 }
 
-/* Puntico manual */
-.topics ul li::before {
-  content: "•";           /* el punto */
-  position: absolute;
-  left: 0;
-  color: #000;            /* color negro */
-  font-size: 1.2em;       /* tamaño del punto */
-  line-height: 1;
+/* Force long words to break so the first column cannot overflow */
+section.topics-dates > .topics,
+section.topics-dates > .topics *{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  hyphens:auto;
+  max-width:100%;
 }
 
-.consultas {
-  max-width: 1600px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #d9f2d9;     /* verde claro */
-  border: 2px solid #4caf50; /* verde más oscuro para el borde */
-  border-radius: 8px;        /* esquinas redondeadas */
+/* ===== Headings & emphasis (keep your look) ===== */
+strong, b, th{ font-weight:800; color:#222; }
+section.topics-dates .topics h2,
+section.topics-dates .dates h2{ color:#000; font-weight:900; }
+
+/* ===== Keep your custom bullets ===== */
+.topics ul{ list-style:none; padding-left:0; margin:0; }
+.topics ul li{
+  margin-bottom:15px;
+  line-height:1.5;
+  position:relative;
+  padding-left:20px; /* space for dot */
+}
+.topics ul li::before{
+  content:"•";
+  position:absolute; left:0;
+  color:#000; font-size:1.2em; line-height:1;
 }
 
-.consultas h2 {
-  margin-top: 0;
-  color: black;  /* título en negro */
-  font-weight: 900;
+/* ===== Dates table stays inside its column ===== */
+section.topics-dates .dates table{
+  width:100% !important;
+  max-width:100% !important;
+  table-layout:fixed !important;
+  border-collapse:collapse;
+  display:table !important;
+}
+section.topics-dates .dates th,
+section.topics-dates .dates td{
+  padding:6px 8px;
+  border-bottom:1px solid #ccc;
+  text-align:left;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
-.consultas p {
-  color: black;  /* texto en negro */
+/* ===== “Consultas” box ===== */
+.consultas{
+  max-width:1600px;
+  margin:30px auto;
+  padding:20px;
+  background:#d9f2d9;
+  border:2px solid #4caf50;
+  border-radius:8px;
 }
+.consultas h2{ margin-top:0; color:#000; font-weight:900; }
+.consultas p{ color:#000; }
+
+/* ===== Responsive: stack columns ===== */
+@media (max-width:1000px){
+  section.topics-dates{
+    flex-direction:column !important;
+  }
+  section.topics-dates > .dates{
+    flex:1 1 auto !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
+}
+
+
+
 </style>
 
 
