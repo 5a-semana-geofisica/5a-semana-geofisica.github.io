@@ -1,101 +1,198 @@
 <!DOCTYPE html>
-<html lang='en'>
-
+<html lang="es">
 <head>
-    <base href=".">
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
-    <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
-    <meta name="description" content="Conference Template">
-    <meta name="resource-type" content="document">
-    <meta name="distribution" content="global">
-    <meta name="KeyWords" content="Conference">
-    <title>Conference Template</title>
+  <meta charset="utf-8">
+  <base href=".">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
+  <meta name="description" content="Conference Template">
+  <title>Conference Template</title>
+
+  <style>
+    /* ===== Banner (slideshow) ===== */
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 320px;           /* ajusta la altura si quieres */
+      max-height: 50vh;
+      overflow: hidden;
+      background: #f3f3f3;     /* color de fondo mientras carga la imagen */
+      display: block;
+    }
+
+    /* Las imágenes del banner NO se recortan (contain) */
+    .banner img.slide {
+      position: absolute;
+      inset: 0;                /* top:0; right:0; bottom:0; left:0 */
+      width: 100%;
+      height: 100%;
+      object-fit: contain;     /* muestra la imagen completa sin recortar */
+      object-position: center;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: block;
+      z-index: 0;
+      background: transparent;
+    }
+
+    .banner img.slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* Si prefieres que la imagen llene todo (recortando) usa: object-fit: cover; */
+
+    /* Pequeña mejora responsive */
+    @media (max-width: 520px) {
+      .banner { height: 220px; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="banner">
-        <img src="assets/banner.jpg" alt="Conference Template Banner">
-        <div class="top-left">
-            <span class="year">5ta</span><span class="title1">Semana de</span><span class="title2"> la Geofísica</span>
-        </div>
-        <div class="bottom-right">
-            June 31, 2525 <br> University Name, and City Maybe
-        </div>
+  <!-- ===== BANNER: SOLO pon aquí las imágenes del banner (NO sponsors) ===== -->
+  <div class="banner" aria-label="Banner rotativo">
+    <!-- Ajusta las rutas de las imágenes según tu proyecto.
+         Aquí pongo ejemplos: "4.png" (en la raíz) y archivos dentro de assets/. -->
+    <img class="slide" src="assets/banner_1.png" alt="Banner 1">
+    <img class="slide" src="assets/banner_2.png" alt="Banner 2">
+  </div>
+
+  <!-- ===== Navegación y contenido (tu HTML original) ===== -->
+  <table class="navigation">
+    <tr>
+      <td class="navigation"><a class="current" title="Conference Home Page" href=".">Home</a></td>
+      <td class="navigation"><a title="Register for the Conference" href="registration">Registration</a></td>
+      <td class="navigation"><a title="Conference Program" href="program">Program</a></td>
+      <td class="navigation"><a title="Directions to the Conference" href="directions">Directions</a></td>
+      <td class="navigation"><a title="Conference Flyer" href="flyer">Flyer</a></td>
+    </tr>
+  </table>
+
+  <h2>Bienvenido a la 5° Semana de la Geofísica</h2>
+
+  <p>
+    Es un gran honor invitarte a la <strong>quinta edición de la Semana de la Geofísica</strong>, 
+    que tendrá lugar del <strong>4 al 8 de noviembre de 2024</strong> en las instalaciones de la 
+    <strong>Universidad Industrial de Santander (UIS)</strong>. Este evento, reúne a destacados <strong>expertos nacionales e internacionales</strong>, 
+    estudiantes, profesionales e investigadores apasionados por la <strong>geofísica, la inteligencia artificial 
+    y la geología ambiental</strong>, en un espacio académico, científico y social único en el país.
+  </p>
+
+  <p>
+    La Semana de la Geofísica se consolida como el encuentro más importante en su campo a nivel nacional, 
+    donde confluyen la innovación, la interdisciplinariedad y la búsqueda de soluciones para los retos actuales 
+    en exploración, monitoreo ambiental, transición energética y gestión del riesgo. Durante cinco días, 
+    podrás disfrutar de <strong>conferencias magistrales, sesiones temáticas, presentaciones orales y de pósters</strong>, 
+    además de participar en un <strong>Challenge académico</strong>, con premios para los mejores trabajos de investigación 
+    y propuestas más creativas.
+  </p>
+
+  <h2>Líneas temáticas</h2>
+  <ul>
+    <li><strong>Métodos potenciales y electromagnéticos</strong> aplicados a exploración, energías limpias y monitoreo ambiental.</li>
+    <li><strong>Diseño de geometrías de adquisición</strong> en métodos sísmicos y electromagnéticos apoyados en IA.</li>
+    <li><strong>Aplicaciones de inteligencia artificial</strong> en problemas geofísicos y geológicos.</li>
+    <li><strong>Geofísica para el recobro mejorado y almacenamiento de CO₂</strong> en el marco de la transición energética.</li>
+    <li><strong>Modelos de lenguaje natural en geociencias</strong>, minería de literatura y gestión del conocimiento.</li>
+    <li><strong>Gestión del riesgo</strong> y monitoreo de amenazas naturales y antropogénicas.</li>
+    <li><strong>Teledetección en geología ambiental</strong> mediante sensores satelitales, drones y radar.</li>
+    <li><strong>Inversión geofísica</strong>: algoritmos, enfoques bayesianos e inversa sísmica.</li>
+    <li><strong>Sismología</strong>: monitoreo de sismos, caracterización de fallas y riesgos sísmicos.</li>
+    <li><strong>Geofísica en energías renovables y cambio climático</strong>.</li>
+  </ul>
+
+  <p>
+    Además de su programa académico, el evento contará con actividades sociales y de integración, 
+    diseñadas para fortalecer redes de colaboración y fomentar un ambiente dinámico y enriquecedor 
+    para todos los participantes.
+  </p>
+
+  <p>
+    La <strong>5° Semana de la Geofísica</strong> es más que un congreso: es una experiencia para aprender, 
+    compartir y construir juntos el futuro de la geociencia en Colombia.
+  </p>
+
+  <p><strong>👉 ¡Te esperamos en Bucaramanga para ser parte de este gran encuentro!</strong></p>
+
+  <h2>Organizadores</h2>
+    <div class="contacto">
+    <strong>Paul Goyes Peñafiel</strong><br>
+    Contacto: <a href="mailto:ypgoype@correo.uis.edu.co">ypgoype@correo.uis.edu.co</a>
+    </div><br>
+
+    <div class="contacto">
+    <strong>Ana María Martínez</strong><br>
+    Contacto: <a href="mailto:ana.mantilla@correo.uis.edu.co">ana.mantilla@correo.uis.edu.co</a>
+    </div><br>
+
+    <div class="contacto">
+    <strong>Grupo de investigación en Diseño de Algoritmos y Procesamiento de Datos Multidimensionales (HDSP)</strong><br>
+    Contacto: <a href="mailto:hdsp@uis.edu.co">hdsp@uis.edu.co</a>
     </div>
 
-    <table class="navigation">
-        <tr>
-            <td class="navigation">
-                <a class="current" title="Conference Home Page" href=".">Home</a>
-            </td>
-            <td class="navigation">
-                <a title="Register for the Conference" href="registration">Registration</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Program" href="program">Program</a> 
-            </td>
-            <td class="navigation">
-                <a title="Directions to the Conference" href="directions">Directions</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Flyer" href="flyer">Flyer</a>
-            </td>
-        </tr>
-    </table>
 
-    <h2>What is This Website?</h2>
-    <p>
-        This website is a template that you could use for a (small) academic conference. 
-        It&rsquo;s got a page for registration, where you can embed a Google Form or some other way for participants to register.
-        It&rsquo;s got a program page to list the schedule for the conference.
-        It&rsquo;s got a directions page to add a bunch of instructions how to get to the conference.
-        It&rsquo;s got a page to put up the flyers and other promotional materials for folks to download.
-    </p>
-    <p>
-        You can use this template by cloning all the files from this
-        <a target="_blank" href="https://github.com/mikepierce/conference-website-template">GitHub repo here</a>.
-        This template was created from a website I made for 
-        <a target="_blank" href="http://math.ucr.edu/~mathconn/">MathConnections 2019</a>,
-        in case you want to see an example of this template being used in the wild.
-    </p>
-    <p>
-        This paragraph is just some filler text to give the homepage some volume:
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim et est et euismod. Fusce et metus tempus, pellentesque ex at, convallis nulla. Ut fringilla commodo tincidunt. Fusce sed est eu massa placerat iaculis eu at mauris. Nullam ut mollis nisi, quis malesuada risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam ipsum tortor, suscipit non tincidunt vel, bibendum in libero. Nulla facilisi. Pellentesque vitae neque metus. Cras quis est pharetra, vestibulum nisl et, viverra ipsum. Etiam porta dignissim purus, quis tempor metus volutpat eu. Praesent pulvinar libero eget purus tincidunt finibus.
-    </p>
+  <!-- ===== Sponsors: las gatitas van aquí, NO en el banner ===== -->
+  <table class="sponsors">
+    <tr>
+      <td class="sponsor">
+        <a href="http://www.eyebleach.me/">
+          <img src="assets/Paul.jpeg" alt="First Sponsor Name">
+        </a>
+      </td>
+      <td class="sponsor">
+        <a href="http://www.eyebleach.me/">
+          <img src="assets/Ana.jpeg" alt="Second Sponsor Name">
+        </a>
+      </td>
+      <td class="sponsor">
+        <a href="http://www.eyebleach.me/">
+          <img src="assets/HDSP.png" alt="Third Sponsor Name">
+        </a>
+      </td>
+    </tr>
+  </table>
 
-    <h2>Organizers</h2>
-    <p>
-        Here&rsquo;s a good place to list the organizers and sponsors of the conference,
-        as well as list contact information for the organizers,
-        and show off the logos of the sponsors.
-        It looks like his conference was sponsored by kittens!
-    </p>
-    <table class="sponsors">
-        <tr>
-            <td class="sponsor">
-                <a href="http://www.eyebleach.me/">
-                    <img src="assets/kitten1.jpg" alt="First Sponsor Name">
-                </a>
-            </td>
-            <td class="sponsor">
-                <a href="http://www.eyebleach.me/">
-                    <img src="assets/kitten2.jpg" alt="Second Sponsor Name" style="width: 80%">
-                </a>
-            </td>
-            <td class="sponsor">
-                <a href="http://www.eyebleach.me/">
-                    <img src="assets/kitten3.jpg" alt="Third Sponsor Name">
-                </a>
-            </td>
-        </tr>
-    </table>
+  <footer>
+    &copy; Conference Organizers &nbsp;|&nbsp; Design by <a href="https://github.com/mikepierce">Mike Pierce</a>
+  </footer>
 
-    <footer>
-        &copy; Conference Organizers
-        &nbsp;|&nbsp; Design by <a href="https://github.com/mikepierce">Mike Pierce</a>
-    </footer>
+  <!-- ===== JavaScript del slideshow ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const banner = document.querySelector('.banner');
+      if (!banner) return;
 
+      const slides = banner.querySelectorAll('img.slide');
+      const total = slides.length;
+      if (total === 0) {
+        console.warn('No se encontraron imágenes de banner (.slide). Revisa las rutas en el HTML.');
+        return;
+      }
+
+      // Inicializar: mostrar la primera imagen
+      let current = 0;
+      slides.forEach((img, i) => {
+        img.loading = 'eager';
+        img.classList.toggle('active', i === 0);
+        img.addEventListener('error', () => console.warn('Error cargando imagen:', img.src));
+      });
+
+      function nextSlide() {
+        slides[current].classList.remove('active');
+        current = (current + 1) % total;
+        slides[current].classList.add('active');
+      }
+
+      const intervalMs = 5000;
+      let intervalId = setInterval(nextSlide, intervalMs);
+
+      // Opcional: pausa al poner el ratón encima (si quieres reanudar después podríamos implementar resume)
+      banner.addEventListener('mouseenter', () => clearInterval(intervalId));
+      banner.addEventListener('mouseleave', () => { intervalId = setInterval(nextSlide, intervalMs); });
+    });
+  </script>
 </body>
 </html>
-
