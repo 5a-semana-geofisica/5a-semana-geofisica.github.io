@@ -1,32 +1,62 @@
 <!DOCTYPE html>
-<html lang='es'>
-
-
-
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <base href="..">
-    <link rel="shortcut icon" type="image/png" href="assets\hdsplogo.png"/>
-    <link rel="stylesheet" type="text/css" media="all" href="assets\main.css"/>
-    <meta name="description" content="Conference Template">
-    <meta name="keywords" content="Conference">
-    <meta name="resource-type" content="document">
-    <meta name="distribution" content="global">
-    <title>5TA SEMANA DE LA GEOFISICA</title>
+  <meta charset="utf-8">
+  <base href="..">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
+  <meta name="description" content="Conference Template">
+  <title>Conference Template</title>
+
+  <style>
+    /* ===== Banner (slideshow) ===== */
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 320px;           /* ajusta la altura si quieres */
+      max-height: 50vh;
+      overflow: hidden;
+      background: #f3f3f3;     /* color de fondo mientras carga la imagen */
+      display: block;
+    }
+
+    /* Las imágenes del banner NO se recortan (contain) */
+    .banner img.slide {
+      position: absolute;
+      inset: 0;                /* top:0; right:0; bottom:0; left:0 */
+      width: 100%;
+      height: 100%;
+      object-fit: contain;     /* muestra la imagen completa sin recortar */
+      object-position: center;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: block;
+      z-index: 0;
+      background: transparent;
+    }
+
+    .banner img.slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* Si prefieres que la imagen llene todo (recortando) usa: object-fit: cover; */
+
+    /* Pequeña mejora responsive */
+    @media (max-width: 520px) {
+      .banner { height: 220px; }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="banner">
-        <img src="assets/banner.jpg" alt="Conference Template Banner">
-        <div class="top-left">
-            <span class="title1" style="display:block;">5TA SEMANA DE LA</span>
-            <span class="title2" style="display:block;">GEOFISICA</span>
-        </div>
-        <div class="bottom-right">
-            June 31, 2525 <br> University Name, and City Maybe
-        </div>
-    </div>
+  <div class="banner" aria-label="Banner rotativo">
+    <!-- Ajusta las rutas de las imágenes según tu proyecto.
+         Aquí pongo ejemplos: "4.png" (en la raíz) y archivos dentro de assets/. -->
+    <img class="slide" src="assets/banner_1.png" alt="Banner 1">
+    <img class="slide" src="assets/banner_2.png" alt="Banner 2">
+  </div>
 
 
 
@@ -35,21 +65,11 @@
 
     <table class="navigation">
         <tr>
-            <td class="navigation">
-                <a title="Conference Home Page" href=".">Home</a>
-            </td>
-            <td class="navigation">
-                <a title="Register for the Conference" href="registration">Registration</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Program" href="program">Program</a> 
-            </td>
-            <td class="navigation">
-                <a class="current" title="Directions to the Conference" href="directions">Directions</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Flyer" href="flyer">Flyer</a>
-            </td>
+        <td class="navigation"><a class="current" title="Conference Home Page" href=".">Inicio</a></td>
+        <td class="navigation"><a title="Register for the Conference" href="registration">Registro</a></td>
+        <td class="navigation"><a title="Conference Program" href="program">Programa</a></td>
+        <td class="navigation"><a title="Directions to the Conference" href="directions">Cómo llegar</a></td>
+        <td class="navigation"><a title="Conference Flyer" href="flyer">Contacto</a></td>
         </tr>
     </table>
 
@@ -88,9 +108,40 @@
         <img src="assets\anh-logo-HD.svg" width="100" height="70" alt="GIDCO LOGO" align="right" style="padding-right: 20px;"/>
     </footer>
 
-</body>
-</html>
+  <!-- ===== JavaScript del slideshow ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const banner = document.querySelector('.banner');
+      if (!banner) return;
 
+      const slides = banner.querySelectorAll('img.slide');
+      const total = slides.length;
+      if (total === 0) {
+        console.warn('No se encontraron imágenes de banner (.slide). Revisa las rutas en el HTML.');
+        return;
+      }
 
+      // Inicializar: mostrar la primera imagen
+      let current = 0;
+      slides.forEach((img, i) => {
+        img.loading = 'eager';
+        img.classList.toggle('active', i === 0);
+        img.addEventListener('error', () => console.warn('Error cargando imagen:', img.src));
+      });
+
+      function nextSlide() {
+        slides[current].classList.remove('active');
+        current = (current + 1) % total;
+        slides[current].classList.add('active');
+      }
+
+      const intervalMs = 5000;
+      let intervalId = setInterval(nextSlide, intervalMs);
+
+      // Opcional: pausa al poner el ratón encima (si quieres reanudar después podríamos implementar resume)
+      banner.addEventListener('mouseenter', () => clearInterval(intervalId));
+      banner.addEventListener('mouseleave', () => { intervalId = setInterval(nextSlide, intervalMs); });
+    });
+  </script>
 </body>
 </html>
