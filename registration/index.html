@@ -3,6 +3,7 @@
 
 <head>
     <base href="..">
+    <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
     <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
     <meta name="description" content="Conference Template">
@@ -10,6 +11,131 @@
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="Conference">
     <title>Registration | Conference Template</title>
+
+<style>
+/* ----- Párrafos en una sola columna ----- *//* ----- Párrafos en una sola columna ----- */
+/* ---------- Base text width ---------- */
+/* ===== Text blocks above the two-column section ===== */
+/* ----- Párrafos arriba ----- */
+/* ===== Paragraphs above ===== *//* ---------- Paragraphs above the two-column section ---------- */
+/* ===== Paragraphs above ===== */
+body p{
+  max-width:1600px;
+  width:100%;
+  margin:0 auto;
+  font-size:1.1em;
+}
+
+/* ===== Two-column layout (beats any floats) ===== */
+section.topics-dates{
+  display:flex !important;
+  align-items:flex-start;
+  gap:32px !important;
+  max-width:1600px;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+
+/* Kill any floats/positions from global CSS */
+section.topics-dates > .topics,
+section.topics-dates > .dates{
+  float:none !important;
+  position:static !important;
+  box-sizing:border-box;
+}
+
+/* RIGHT column: fixed width so it never pushes left */
+section.topics-dates > .dates{
+  flex:0 0 420px !important;
+  width:420px !important;
+  max-width:420px !important;
+  min-width:0 !important;
+  overflow:hidden;                 /* safety */
+}
+
+/* LEFT column: fluid; create its own BFC so it NEVER wraps under floats */
+section.topics-dates > .topics{
+  flex:1 1 auto !important;
+  min-width:0 !important;          /* allow shrinking within flex */
+  display:flow-root !important;    /* isolates from any right float */
+}
+
+/* Force long words to break so the first column cannot overflow */
+section.topics-dates > .topics,
+section.topics-dates > .topics *{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  hyphens:auto;
+  max-width:100%;
+}
+
+/* ===== Headings & emphasis (keep your look) ===== */
+strong, b, th{ font-weight:800; color:#222; }
+section.topics-dates .topics h2,
+section.topics-dates .dates h2{ color:#000; font-weight:900; }
+
+/* ===== Keep your custom bullets ===== */
+.topics ul{ list-style:none; padding-left:0; margin:0; }
+.topics ul li{
+  margin-bottom:15px;
+  line-height:1.5;
+  position:relative;
+  padding-left:20px; /* space for dot */
+}
+.topics ul li::before{
+  content:"•";
+  position:absolute; left:0;
+  color:#000; font-size:1.2em; line-height:1;
+}
+
+/* ===== Dates table stays inside its column ===== */
+section.topics-dates .dates table{
+  width:100% !important;
+  max-width:100% !important;
+  table-layout:fixed !important;
+  border-collapse:collapse;
+  display:table !important;
+}
+section.topics-dates .dates th,
+section.topics-dates .dates td{
+  padding:6px 8px;
+  border-bottom:1px solid #ccc;
+  text-align:left;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* ===== “Consultas” box ===== */
+.consultas{
+  max-width:1600px;
+  margin:30px auto;
+  padding:20px;
+  background:#d9f2d9;
+  border:2px solid #4caf50;
+  border-radius:8px;
+}
+.consultas h2{ margin-top:0; color:#000; font-weight:900; }
+.consultas p{ color:#000; }
+
+/* ===== Responsive: stack columns ===== */
+@media (max-width:1000px){
+  section.topics-dates{
+    flex-direction:column !important;
+  }
+  section.topics-dates > .dates{
+    flex:1 1 auto !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
+}
+
+
+
+</style>
+
+
+    
 </head>
 
 <body>
@@ -26,39 +152,91 @@
 
     <table class="navigation">
         <tr>
-            <td class="navigation">
-                <a title="Conference Home Page" href=".">Home</a>
-            </td>
-            <td class="navigation">
-                <a class="current" title="Register for the Conference" href="registration">Registration</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Program" href="program">Program</a> 
-            </td>
-            <td class="navigation">
-                <a title="Directions to the Conference" href="directions">Directions</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Flyer" href="flyer">Flyer</a>
-            </td>
+            <td class="navigation"><a title="Conference Home Page" href=".">Home</a></td>
+            <td class="navigation"><a class="current" title="Register for the Conference" href="registration">Registration</a></td>
+            <td class="navigation"><a title="Conference Program" href="program">Program</a></td>
+            <td class="navigation"><a title="Directions to the Conference" href="directions">Directions</a></td>
+            <td class="navigation"><a title="Conference Flyer" href="flyer">Flyer</a></td>
         </tr>
     </table>
 
     <br>
 
     <p>
-        Here&rsquo;s where you provide instructions how to register for your conference.
-        We used a <a href="https://www.google.com/forms/about/">Google Form</a> 
-        and embedded it into an <i>iframe</i> (it&rsquo;s commented out in the html here).
-    </p>
-    <!--
-    <iframe class="registration" src="EMBED LINK FOR GOOGLE FORM HERE"></iframe>
-    -->
-    <p>
-        Here&rsquo;s another paragraph of filler text:
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim et est et euismod. Fusce et metus tempus, pellentesque ex at, convallis nulla. Ut fringilla commodo tincidunt. Fusce sed est eu massa placerat iaculis eu at mauris. Nullam ut mollis nisi, quis malesuada risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam ipsum tortor, suscipit non tincidunt vel, bibendum in libero. Nulla facilisi. Pellentesque vitae neque metus. Cras quis est pharetra, vestibulum nisl et, viverra ipsum. Etiam porta dignissim purus, quis tempor metus volutpat eu. Praesent pulvinar libero eget purus tincidunt finibus.
+        La 5a Semana de la Geofísica tendrá lugar en Bucaramanga, Santander,
+        también conocida como la "Ciudad bonita",
+        destacada por su notable cantidad de parques y zonas verdes; puerta de entrada a algunos de los paisajes más espectaculares de
+        los Andes colombianos. La Semana de la Geofísica es un evento que
+        explora los últimos avances en temas de exploración y monitoreo geofísico,
+        aplicaciones de inteligencia artificial y ciencia de datos en geociencias,
+        energías renovables y transición energética, gestión de riesgos naturales
+        y cambio climático, así como innovación en inversión geofísica, sismología 
+        y agrogeofísica.
     </p>
 
+    <p>
+        Para realizar el proceso de inscripción se usa un 
+        <a href="https://www.google.com/forms/about/">formulario de Google</a>, 
+        dentro del cual encontrará las respectivas indicaciones para proceder adecuadamente.  
+        El único requisito necesario para su inscripción al evento es la diligenciación del <em>abstract</em> de su trabajo.
+    </p>
+
+    <!-- ======= Sección en dos columnas ======= -->
+    <section class="topics-dates">
+      
+      <!-- Columna izquierda: Temas -->
+      <div class="topics">
+        <h2>Temas de Interés</h2>
+        <ul>
+          <li><strong>Métodos potenciales y electromagnéticos:</strong> Avances en gravimetría, magnetometría, electromagnetismo <br>aplicado a la exploración, energías limpias y monitoreo ambiental.</li>
+          <li><strong>Diseño de geometrías de adquisición:</strong> Estrategias de diseño en métodos sísmicos, potenciales y electromagnéticos, mediante inteligencia artificial y evaluación de la iluminación del subsuelo.</li>
+          <li><strong>Inteligencia artificial en problemas geofísicos y geológicos:</strong> Aprendizaje profundo, machine learning<br> y técnicas híbridas en problemas de exploración, modelado e interpretación.</li>
+          <li><strong>Geofísica para el recobro mejorado y almacenamiento de CO₂:</strong> Métodos de monitoreo geofísico en<br> procesos de recobro, inyección de fluidos y tecnologías de transición energética.</li>
+          <li><strong>Modelos de lenguaje natural en geociencias:</strong> Procesamiento de datos textuales, minería de literatura<br> científica y aplicaciones en gestión de conocimiento geofísico y geológico.</li>
+          <li><strong>Gestión del riesgo y de las amenazas naturales:</strong> Métodos geofísicos e integrados para prevención,<br> monitoreo y mitigación de amenazas naturales y antropogénicas.</li>
+          <li><strong>Teledetección en geología ambiental:</strong> Aplicaciones de sensores satelitales, drones y radar en gestión<br> del riesgo, recursos hídricos y geología ambiental.</li>
+          <li><strong>Teoría y aplicaciones de la inversión geofísica:</strong> Avances en algoritmos, enfoques bayesianos, inversa<br> sísmica y regularización con modelos físicos y de aprendizaje automático.</li>
+          <li><strong>Aportes en sismología:</strong> Monitoreo de sismos, caracterización de fallas activas, modelos del subsuelo,<br> riesgos sísmicos y nuevas aproximaciones de modelado.</li>
+          <li><strong>Geofísica en energías renovables y transición energética:</strong> Aplicaciones en geotermia, hidrógeno<br> subterráneo, energía eólica y solar, con énfasis en la caracterización del subsuelo y el almacenamiento.</li>
+          <li><strong>Geofísica y cambio climático:</strong> Uso de métodos geofísicos, ciencia de datos e inteligencia<br> artificial para estudiar el cambio climático.</li>
+          <li><strong>Agrogeofísica:</strong> Aplicación de métodos geofísicos al estudio de suelos, agricultura de precisión,<br> monitoreo de nutrientes y sostenibilidad agroambiental.</li>
+        </ul>
+      </div>
+
+
+
+
+      <!-- Columna derecha: Fechas -->
+      <div class="dates">
+        <h2>Fechas Importantes</h2>
+        <table>
+          <thead>
+            <tr><th>Evento</th><th>Fecha</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- ======================================= -->
+
+<div class="consultas">
+  <h2>Consultas</h2>
+  <p>
+    Todas las consultas relacionadas con el evento deben enviarse al correo 
+    <a href="mailto:ana.mantilla@correo.uis.edu.co ">ana.mantilla@correo.uis.edu.co </a>, <a href="mailto:ypgoype@correo.uis.edu.co ">ypgoype@correo.uis.edu.co </a> o <a href="mailto:hdsp@uis.edu.co ">hdsp@uis.edu.co </a> .  
+    El equipo organizador atenderá cualquier inquietud sobre inscripciones, envíos de resúmenes o información general.
+  </p>
+</div>
     <footer>
         &copy; Conference Organizers
         &nbsp;|&nbsp; Design by <a href="https://github.com/mikepierce">Mike Pierce</a>
@@ -66,4 +244,3 @@
 
 </body>
 </html>
-
