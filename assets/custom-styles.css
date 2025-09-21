@@ -1,0 +1,156 @@
+/* ===== Banner (slideshow) ===== */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 320px;           /* ajusta la altura si quieres */
+  max-height: 50vh;
+  overflow: hidden;
+  background: #f3f3f3;     /* color de fondo mientras carga la imagen */
+  display: block;
+}
+
+/* Las imágenes del banner NO se recortan (contain) */
+.banner img.slide {
+  position: absolute;
+  inset: 0;                /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* muestra la imagen completa sin recortar */
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  display: block;
+  z-index: 0;
+  background: transparent;
+}
+
+.banner img.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Si prefieres que la imagen llene todo (recortando) usa: object-fit: cover; */
+
+/* Pequeña mejora responsive */
+@media (max-width: 520px) {
+  .banner { height: 220px; }
+}
+
+/* ===== Estilos específicos para la página de registro ===== */
+/* ----- Párrafos en una sola columna ----- */
+/* ---------- Base text width ---------- */
+/* ===== Text blocks above the two-column section ===== */
+/* ----- Párrafos arriba ----- */
+/* ===== Paragraphs above ===== */
+/* ---------- Paragraphs above the two-column section ---------- */
+/* ===== Paragraphs above ===== */
+body.registration-page p{
+  max-width:1600px;
+  width:100%;
+  margin:0 auto;
+  font-size:1.1em;
+}
+
+/* ===== Two-column layout (beats any floats) ===== */
+section.topics-dates{
+  display:flex !important;
+  align-items:flex-start;
+  gap:32px !important;
+  max-width:1600px;
+  margin:0 auto;
+  box-sizing:border-box;
+}
+
+/* Kill any floats/positions from global CSS */
+section.topics-dates > .topics,
+section.topics-dates > .dates{
+  float:none !important;
+  position:static !important;
+  box-sizing:border-box;
+}
+
+/* RIGHT column: fixed width so it never pushes left */
+section.topics-dates > .dates{
+  flex:0 0 420px !important;
+  width:420px !important;
+  max-width:420px !important;
+  min-width:0 !important;
+  overflow:hidden;                 /* safety */
+}
+
+/* LEFT column: fluid; create its own BFC so it NEVER wraps under floats */
+section.topics-dates > .topics{
+  flex:1 1 auto !important;
+  min-width:0 !important;          /* allow shrinking within flex */
+  display:flow-root !important;    /* isolates from any right float */
+}
+
+/* Force long words to break so the first column cannot overflow */
+section.topics-dates > .topics,
+section.topics-dates > .topics *{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  hyphens:auto;
+  max-width:100%;
+}
+
+/* ===== Headings & emphasis (keep your look) ===== */
+strong, b, th{ font-weight:800; color:#222; }
+section.topics-dates .topics h2,
+section.topics-dates .dates h2{ color:#000; font-weight:900; }
+
+/* ===== Keep your custom bullets ===== */
+.topics ul{ list-style:none; padding-left:0; margin:0; }
+.topics ul li{
+  margin-bottom:15px;
+  line-height:1.5;
+  position:relative;
+  padding-left:20px; /* space for dot */
+}
+.topics ul li::before{
+  content:"•";
+  position:absolute; left:0;
+  color:#000; font-size:1.2em; line-height:1;
+}
+
+/* ===== Dates table stays inside its column ===== */
+section.topics-dates .dates table{
+  width:100% !important;
+  max-width:100% !important;
+  table-layout:fixed !important;
+  border-collapse:collapse;
+  display:table !important;
+}
+section.topics-dates .dates th,
+section.topics-dates .dates td{
+  padding:6px 8px;
+  border-bottom:1px solid #ccc;
+  text-align:left;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* ===== "Consultas" box ===== */
+.consultas{
+  max-width:1600px;
+  margin:30px auto;
+  padding:20px;
+  background:#d9f2d9;
+  border:2px solid #4caf50;
+  border-radius:8px;
+}
+.consultas h2{ margin-top:0; color:#000; font-weight:900; }
+.consultas p{ color:#000; }
+
+/* ===== Responsive: stack columns ===== */
+@media (max-width:1000px){
+  section.topics-dates{
+    flex-direction:column !important;
+  }
+  section.topics-dates > .dates{
+    flex:1 1 auto !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
+}

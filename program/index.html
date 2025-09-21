@@ -6,48 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
   <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="assets/custom-styles.css"/>
   <meta name="description" content="Conference Template">
   <title>Conference Template</title>
-
-  <style>
-    /* ===== Banner (slideshow) ===== */
-    .banner {
-      position: relative;
-      width: 100%;
-      height: 320px;           /* ajusta la altura si quieres */
-      max-height: 50vh;
-      overflow: hidden;
-      background: #f3f3f3;     /* color de fondo mientras carga la imagen */
-      display: block;
-    }
-
-    /* Las imágenes del banner NO se recortan (contain) */
-    .banner img.slide {
-      position: absolute;
-      inset: 0;                /* top:0; right:0; bottom:0; left:0 */
-      width: 100%;
-      height: 100%;
-      object-fit: contain;     /* muestra la imagen completa sin recortar */
-      object-position: center;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      display: block;
-      z-index: 0;
-      background: transparent;
-    }
-
-    .banner img.slide.active {
-      opacity: 1;
-      z-index: 1;
-    }
-
-    /* Si prefieres que la imagen llene todo (recortando) usa: object-fit: cover; */
-
-    /* Pequeña mejora responsive */
-    @media (max-width: 520px) {
-      .banner { height: 220px; }
-    }
-  </style>
 </head>
 
 <body>
@@ -357,41 +318,7 @@
     </footer>
 
 
-      <!-- ===== JavaScript del slideshow ===== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const banner = document.querySelector('.banner');
-      if (!banner) return;
-
-      const slides = banner.querySelectorAll('img.slide');
-      const total = slides.length;
-      if (total === 0) {
-        console.warn('No se encontraron imágenes de banner (.slide). Revisa las rutas en el HTML.');
-        return;
-      }
-
-      // Inicializar: mostrar la primera imagen
-      let current = 0;
-      slides.forEach((img, i) => {
-        img.loading = 'eager';
-        img.classList.toggle('active', i === 0);
-        img.addEventListener('error', () => console.warn('Error cargando imagen:', img.src));
-      });
-
-      function nextSlide() {
-        slides[current].classList.remove('active');
-        current = (current + 1) % total;
-        slides[current].classList.add('active');
-      }
-
-      const intervalMs = 5000;
-      let intervalId = setInterval(nextSlide, intervalMs);
-
-      // Opcional: pausa al poner el ratón encima (si quieres reanudar después podríamos implementar resume)
-      banner.addEventListener('mouseenter', () => clearInterval(intervalId));
-      banner.addEventListener('mouseleave', () => { intervalId = setInterval(nextSlide, intervalMs); });
-    });
-  </script>
+      <script src="assets/custom-scripts.js"></script>
 
 </body>
 </html>
