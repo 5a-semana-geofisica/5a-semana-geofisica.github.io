@@ -274,6 +274,13 @@ section.topics-dates .dates td:not(.date) {
   fill: currentColor;
 }
 
+.whatsapp-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  fill: currentColor;
+}
+
 .footer-sponsors {
   display: flex;
   flex-wrap: wrap;
