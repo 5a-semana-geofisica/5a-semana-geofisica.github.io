@@ -294,6 +294,54 @@ section.topics-dates .dates td:not(.date) {
   transform: scale(1.05);
 }
 
+/* ===== New Footer Organization Styles ===== */
+.footer-organization {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.organizers-section,
+.sponsors-section,
+.supporters-section {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.organizers-section h4,
+.sponsors-section h4,
+.supporters-section h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 15px 0;
+  text-align: center !important;
+}
+
+.logos-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.logos-group img {
+  max-height: 60px;
+  max-width: 120px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logos-group img:hover {
+  transform: scale(1.05);
+}
+
 .footer-info {
   font-size: 0.9em;
   color: #64748b;
@@ -323,11 +371,30 @@ section.topics-dates .dates td:not(.date) {
     padding: 0 20px;
   }
   
-  .footer-sponsors {
+  .footer-organization {
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+  }
+  
+  .organizers-section,
+  .sponsors-section,
+  .supporters-section {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .organizers-section h4,
+  .sponsors-section h4,
+  .supporters-section h4 {
+    font-size: 1em;
+  }
+  
+  .logos-group {
     gap: 15px;
   }
   
-  .footer-sponsors img {
+  .logos-group img {
     max-height: 50px;
     max-width: 100px;
   }
