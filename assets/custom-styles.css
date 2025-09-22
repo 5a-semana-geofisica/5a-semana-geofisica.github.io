@@ -55,6 +55,8 @@ body.registration-page p{
   width:100%;
   margin:0 auto;
   font-size:1.1em;
+  text-align: justify !important;
+  text-justify: inter-word;
 }
 
 /* ===== Two-column layout (beats any floats) ===== */
@@ -112,6 +114,8 @@ section.topics-dates .dates h2{ color:#374151; font-weight:600; font-family:'Int
   line-height:1.5;
   position:relative;
   padding-left:20px; /* space for dot */
+  text-align: justify !important;
+  text-justify: inter-word;
 }
 .topics ul li::before{
   content:"•";
@@ -135,6 +139,13 @@ section.topics-dates .dates td{
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+}
+
+/* Justificar solo el contenido de texto largo en tablas */
+section.topics-dates .dates td:not(.date) {
+  text-align: justify !important;
+  text-justify: inter-word;
+  white-space: normal;
 }
 
 /* ===== "Consultas" box ===== */
@@ -326,4 +337,65 @@ section.topics-dates .dates td{
     font-size: 0.9em;
     margin: 5px;
   }
+}
+
+/* ===== JUSTIFICACIÓN GLOBAL DE TEXTOS ===== */
+/* Justificar todos los párrafos por defecto - Override main.css */
+p {
+  text-align: justify !important;
+  text-justify: inter-word;
+}
+
+/* Justificar elementos de lista */
+li {
+  text-align: justify !important;
+  text-justify: inter-word;
+}
+
+/* Justificar contenido de celdas de tabla (abstracts y descripciones) */
+td.abstract,
+td.title,
+.abstract {
+  text-align: justify !important;
+  text-justify: inter-word;
+}
+
+/* Justificar divs de consultas y contenido general */
+.consultas p {
+  text-align: justify !important;
+  text-justify: inter-word;
+}
+
+/* Justificar texto en elementos div y secciones generales */
+div p,
+section p,
+.content p {
+  text-align: justify !important;
+  text-justify: inter-word;
+}
+
+/* Mantener centrado solo para elementos específicos que lo requieren */
+.footer-info,
+.footer-info p,
+.footer-social,
+.sponsor-name,
+.sponsor-email {
+  text-align: center !important;
+}
+
+/* Mantener alineación específica para navegación */
+.navigation,
+.navigation a {
+  text-align: center !important;
+}
+
+/* Mantener alineación para fechas y títulos especiales */
+.date,
+.title-special {
+  text-align: left !important;
+}
+
+/* Encabezados mantienen su alineación por defecto */
+h1, h2, h3, h4, h5, h6 {
+  text-align: left !important;
 }
