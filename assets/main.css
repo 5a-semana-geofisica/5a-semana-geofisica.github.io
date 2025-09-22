@@ -1,19 +1,18 @@
 /* main.css */
 
-/* These are the colors and fonts used throughout the webpage.
- * I've listed them here so that a user may easily
- * do a search-and-replace for these to change the site theme.
- *   'Roboto',sans-serif; Font for the title text
- *   'Roboto-Slab',serif; Font for the body text 
- *   #fafafa; Background color of the site
- *   #505050; Foreground (text) color of the site
- *   #52739e; Navy, "Template" in the logo, current page in navigation, special titles in the Program
- *   #b2132e; Reddish, "Conference" in the logo, hover color for links
- *   #813c54; Heading color, titles in the Program
- *   #b8860b; Dark Goldenrod, color for links
+/* Modern typography and color scheme for the website.
+ * Updated with clean, professional colors - NO BLUE:
+ *   'Inter',sans-serif; Font for headings and navigation - clean and modern
+ *   'Source Sans Pro',sans-serif; Font for body text - highly readable
+ *   #ffffff; Background color - clean white
+ *   #1a1a1a; Primary text color - rich black
+ *   #dc2626; Primary accent - clean red
+ *   #ef4444; Secondary accent - modern red
+ *   #374151; Heading color - sophisticated dark gray
+ *   #1f2937; Link color - dark gray
  */
 
-@import url('https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Slab');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
 
 *{
     border:0;
@@ -25,34 +24,36 @@
 }
 
 body{
-    background-color: #fafafa;
+    background-color: #ffffff;
     background-size: cover;
     background-attachment: fixed;
-    color: #505050; 
+    color: #1a1a1a; 
     text-align:left;
-    font-family:'Roboto',sans-serif;
-    font-size:1em;
-    line-height:1.5em;
-    margin: 60px auto;
+    font-family:'Source Sans Pro',sans-serif;
+    font-size:1.1em;
+    line-height:1.7em;
+    margin: 40px auto;
     width: 1000px;
+    font-weight: 400;
 }
 
-a{color: #b8860b; text-decoration:none;}
-a.current{color: #52739e;}
-a.current:hover{color: #e82945;}
-a:hover{color: #b2132e;}
-a:active{color: #e82945;}
-h1,h2,h3,h4{clear:left; color: #813c54; margin:1.5em 0em 1em 0em; font-family:'Roboto Slab',serif; text-shadow: 1px 1px 2px #d0d0d0;}
-h1{font-size:2.67em;}
-h2{font-size:2.00em;}
-h3{font-size:1.67em;}
-h4{font-size:1.33em;}
-p{list-style:none; margin:24px auto 24px auto; padding:0px; width:900px; text-align:left;}
-li a, p a {text-decoration:underline; text-decoration-color:#b8860b;}
-ul{list-style:none; margin:24px auto 24px auto; padding:0px; width:800px; text-align:left;}
-ul li{list-style:none; margin:0px auto 0px auto; padding:0px; text-align:left;}
+a{color: #1f2937; text-decoration:none; transition: color 0.3s ease;}
+a.current{color: #1a1a1a; font-weight: 600;}
+a.current:hover{color: #dc2626;}
+a:hover{color: #dc2626;}
+a:active{color: #b91c1c;}
+h1,h2,h3,h4{clear:left; color: #374151; margin:2em 0em 1.2em 0em; font-family:'Inter',sans-serif; font-weight: 600; letter-spacing: -0.02em;}
+h1{font-size:2.8em; font-weight: 700;}
+h2{font-size:2.2em;}
+h3{font-size:1.8em;}
+h4{font-size:1.4em;}
+p{list-style:none; margin:28px auto 28px auto; padding:0px; width:900px; text-align:left; line-height: 1.8em;}
+li a, p a {text-decoration:underline; text-decoration-color:#1f2937; text-underline-offset: 3px;}
+ul{list-style:none; margin:28px auto 28px auto; padding:0px; width:850px; text-align:left;}
+ul li{list-style:none; margin:0px auto 12px auto; padding:0px 0px 0px 20px; text-align:left; position: relative; line-height: 1.7em;}
+ul li:before{content: "•"; color: #374151; font-weight: bold; position: absolute; left: 0;}
 i,em{font-style:italic;}
-b,strong{font-weight:bold;}
+b,strong{font-weight:600; color: #1a1a1a;}
 sup{
     vertical-align: super;
     font-size: 0.8em;
@@ -77,33 +78,98 @@ th,td{
 }
 
 /* Website Banner */
-.banner {position: relative; font-family:'Roboto Slab',serif;}
-.top-left {font-size:5.33em; color: #505050; background: #fafafa; text-align: center; width: 1000px; height: 67px; position: absolute; padding: 36px 0 0 0; top: 0px;}
-.bottom-right {font-size:2.33em; color: #fafafa; line-height: 1.5em; width: auto; height: 100px; padding: 0px 27px 27px 0px; text-align: right; position: absolute; bottom: 0px; right: 0px; text-shadow: 0px 0px 6px #000000;}
+.banner {position: relative; font-family:'Inter',sans-serif; margin-bottom: 40px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.06);}
+.top-left {font-size:5.33em; color: #1a1a1a; background: rgba(255,255,255,0.95); text-align: center; width: 1000px; height: 67px; position: absolute; padding: 36px 0 0 0; top: 0px; backdrop-filter: blur(10px);}
+.bottom-right {font-size:2.33em; color: #ffffff; line-height: 1.5em; width: auto; height: 100px; padding: 0px 27px 27px 0px; text-align: right; position: absolute; bottom: 0px; right: 0px; text-shadow: 0px 0px 8px rgba(0,0,0,0.5);}
 
 /* Conference Title Logo */
-.title1{color: #b2132e; text-shadow: 1px 1px 3px #c0c0c0;} 
-.title2{color: #52739e; text-shadow: 1px 1px 3px #c0c0c0;}
-.year{color: #505050; font-size:0.67em; font-weight: lighter;}
+.title1{color: #ef4444; text-shadow: none;} 
+.title2{color: #374151; text-shadow: none;}
+.year{color: #64748b; font-size:0.67em; font-weight: 300;}
 
-/* Navigation Links (Home, Registration, etc) */
-table.navigation{width:800px;}
-td.navigation{font-size:1.67em; white-space:nowrap; width:20%; text-align:center; vertical-align:middle; padding:0px 0px 0px 0px;}
+/* Navigation Links - CLEAN AND WORKING */
+table.navigation{
+    width:900px;
+    margin: 60px auto 80px auto;
+    border-bottom: 2px solid #e5e7eb;
+}
+td.navigation{
+    font-size:1.1em; 
+    white-space:nowrap; 
+    width:20%; 
+    text-align:center; 
+    vertical-align:middle; 
+    padding:0;
+    font-family:'Inter',sans-serif;
+    font-weight: 500;
+}
+td.navigation a{
+    display: block;
+    padding: 20px 16px;
+    color: #6b7280;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    font-size: 0.95em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    border-bottom: 3px solid transparent;
+}
+td.navigation a:hover{
+    color: #1f2937;
+    border-bottom-color: #d1d5db;
+}
+td.navigation a.current{
+    color: #1f2937;
+    font-weight: 700;
+    border-bottom-color: #1f2937;
+    background: none;
+    box-shadow: none;
+}
+td.navigation a.current:hover{
+    color: #1f2937;
+    border-bottom-color: #1f2937;
+}
 
 /* Sponsor Images */
-table.sponsors{width:800px;}
-td.sponsor{white-space:nowrap; width:33%; text-align:center; vertical-align:middle; padding:0px 0px 0px 0px;}
-td.sponsor img{width: 100%}
+table.sponsors{
+    width:850px;
+    margin: 80px auto 60px auto;
+    background: #fafafa;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+td.sponsor{
+    white-space:nowrap; 
+    width:33%; 
+    text-align:center; 
+    vertical-align:middle; 
+    padding:20px;
+    transition: transform 0.3s ease;
+}
+td.sponsor:hover{
+    transform: translateY(-8px);
+}
+td.sponsor img{
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+td.sponsor img:hover{
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
 
 /* The Table on the Program Page */
-td.room{padding: 4px 12px 4px 4px; width: 90%; vertical-align:bottom; font-size:1.67em; color: #52739e; height:32px;}
-td.date{white-space:nowrap; width:130px; text-align:right; vertical-align:top; padding:4px 16px 0px 0px;}
-td.title{padding: 4px 12px 4px 4px; width: 90%; vertical-align:top; font-size:1.5em; color: #813c54; height:32px; font-family:'Roboto Slab',serif; text-shadow: 1px 1px 2px #d0d0d0; }
-td.title-special{padding: 4px 12px 4px 4px; width: 90%; vertical-align:top; font-size:1.67em; color: #52739e; height:32px; font-family:'Roboto Slab',serif; text-shadow: 1px 1px 2px #d0d0d0;}
-td.speaker{padding: 4px 12px 4px 4px; font-style: italic; font-size:1em; max-height:999999px}
-td.abstract{padding: 4px 12px 12px 4px; font-size:1em; max-height:999999px}
-td.abstract img{display: block; margin: 4px auto 8px auto}
-table.plenary{padding-top: 8px; background: #ffffff;}
+td.room{padding: 8px 16px 8px 8px; width: 90%; vertical-align:bottom; font-size:1.4em; color: #374151; height:40px; font-weight: 500;}
+td.date{white-space:nowrap; width:130px; text-align:right; vertical-align:top; padding:8px 20px 0px 0px; font-weight: 500;}
+td.title{padding: 8px 16px 8px 8px; width: 90%; vertical-align:top; font-size:1.3em; color: #374151; height:40px; font-family:'Inter',sans-serif; font-weight: 500; }
+td.title-special{padding: 8px 16px 8px 8px; width: 90%; vertical-align:top; font-size:1.5em; color: #1f2937; height:40px; font-family:'Inter',sans-serif; font-weight: 600;}
+td.speaker{padding: 8px 16px 8px 8px; font-style: italic; font-size:1.1em; max-height:999999px; color: #64748b;}
+td.abstract{padding: 8px 16px 16px 8px; font-size:1.05em; max-height:999999px; line-height: 1.6em;}
+td.abstract img{display: block; margin: 8px auto 12px auto; border-radius: 8px;}
+table.plenary{padding-top: 12px; background: #ffffff; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.04);}
 
 /* Registration and Directions iframes and Images */
 iframe.registration{display:block; margin:1em auto 2em auto; width:700px; height:1400px; border:none;}
@@ -111,19 +177,107 @@ iframe.directions{display:block; margin:1em auto 2em auto; width:800px; height:4
 img.center{display:block; width:67%; margin:1em auto 2em auto;}
 
 /* Flyer Images */
-table.flyers{width:800px;}
-td.flyer{white-space:nowrap; width:50%; text-align:center; vertical-align:middle; padding:0px 0px 0px 0px;}
-td.sponsor img{width: 100%}
+table.flyers{width:850px; margin: 40px auto;}
+td.flyer{white-space:nowrap; width:50%; text-align:center; vertical-align:middle; padding:15px;}
+td.flyer img{width: 100%; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);}
 
-footer{font-size:0.875em; margin-top:12em; text-align:center;}
+/* Contact section for flyer page */
+.contact-section{
+    margin: 40px auto;
+    max-width: 850px;
+}
+.contact-content{
+    max-width: 800px; 
+    margin: 0 auto; 
+    text-align: center;
+}
+.contact-section h1{
+    text-align: center; 
+    margin-bottom: 20px;
+    color: #374151;
+}
+.contact-section h3{
+    margin: 30px 0 15px; 
+    text-align: center;
+    color: #374151;
+}
 
-/* My hacky way of making the site mobile-friendly */
+/* Contact section styling */
+.contacto{
+    background: #fafafa;
+    padding: 24px;
+    margin: 24px auto;
+    border-radius: 16px;
+    border-left: 4px solid #374151;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    width: 850px;
+}
+.contacto strong{
+    color: #1a1a1a;
+    font-size: 1.1em;
+}
+.contacto a{
+    color: #1f2937;
+    font-weight: 500;
+}
+
+footer{
+    font-size:0.9em; 
+    margin-top:100px; 
+    text-align:center;
+    padding: 40px 0;
+    color: #64748b;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Modern responsive design with multiple breakpoints */
 @media only screen and (max-width: 1100px) {
-    h2{font-size:3.00em;}
-    p{font-size:1.5em; line-height:1.5em;}
-    th,td,tr{font-size:1.5em; line-height:1.5em;}
+    body{ width: 95%; max-width: 900px; margin: 20px auto; }
+    h1{font-size:2.4em;}
+    h2{font-size:2.0em;}
+    p{width:100%; font-size:1.1em; line-height:1.7em;}
+    ul{width:100%;}
+    th,td,tr{font-size:1.1em; line-height:1.6em;}
     td.date{font-size:1em; padding-top:0.5em;}
-    td.navigation{font-size:1.5em; padding:0px 20px 0px 20px;}
-    table.footer{font-size:0.33em;}
+    table.navigation{width:100%; margin: 40px auto 60px auto;}
+    td.navigation a{padding:16px 20px; font-size:0.9em;}
+    table.sponsors{width:100%; padding: 30px;}
+    td.sponsor{padding:15px 10px;}
+    .contacto{width:100%;}
+}
+
+@media only screen and (max-width: 768px) {
+    body{ margin: 15px auto; font-size: 1.0em; }
+    h1{font-size:2.0em;}
+    h2{font-size:1.8em;}
+    table.navigation{width: 100%; margin: 30px auto 50px auto;}
+    td.navigation{
+        display: block; 
+        width: 100%; 
+        text-align: center;
+        padding: 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    td.navigation:last-child{border-bottom: none;}
+    td.navigation a{
+        padding: 16px 20px;
+        display: block;
+        width: 100%;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+    }
+    td.navigation a.current{
+        border-left-color: #1f2937;
+        background: #f9fafb;
+    }
+    table.sponsors{padding: 20px;}
+    td.sponsor{display: block; width: 100%; padding: 15px 0;}
+}
+
+@media only screen and (max-width: 480px) {
+    body{ margin: 10px auto; }
+    h1{font-size:1.8em;}
+    h2{font-size:1.6em;}
+    td.navigation a{padding: 14px 16px; font-size: 0.95em;}
 }
 
