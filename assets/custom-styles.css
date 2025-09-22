@@ -473,3 +473,44 @@ section p,
 h1, h2, h3, h4, h5, h6 {
   text-align: left !important;
 }
+
+/* ===== Flyers Section Styles ===== */
+.flyers-section {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.flyer-container {
+  flex: 1;
+  max-width: 500px;
+  text-align: center;
+}
+
+.flyer-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flyer-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+/* Responsive flyers */
+@media (max-width: 768px) {
+  .flyers-section {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .flyer-container {
+    max-width: 400px;
+  }
+}
