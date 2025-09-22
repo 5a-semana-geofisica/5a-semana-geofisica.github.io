@@ -161,6 +161,53 @@ section.topics-dates .dates td{
   }
 }
 
+/* ===== Sponsor Names Below Images ===== */
+.sponsor-name {
+  margin-top: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  color: #374151;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 10px;
+}
+
+.sponsor-email {
+  margin-top: 8px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.9em;
+  color: #64748b;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.sponsor-email a {
+  color: #1f2937;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sponsor-email a:hover {
+  color: #dc2626;
+  text-decoration: underline;
+}
+
+/* Make organizer images uniform size */
+.sponsors img {
+  width: 150px !important;
+  height: 150px !important;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #e2e8f0;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.sponsors img:hover {
+  transform: scale(1.05);
+  border-color: #dc2626;
+}
+
 /* ===== Enhanced Footer Styles ===== */
 .footer-enhanced {
   background: #f8fafc;
