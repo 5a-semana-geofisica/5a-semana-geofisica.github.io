@@ -28,6 +28,15 @@
     .curso-card img { max-width: 100%; height: auto; border-radius: 4px; }
     .curso-title { font-weight: 700; margin-top: 8px; }
     .back-link { margin-top: 20px; display:block; text-align:center; }
+    /* Lightbox styles */
+    #lightbox { display: none; position: fixed; inset: 0; z-index: 10000; }
+    #lightbox[aria-hidden="false"] { display: block; }
+    #lightbox-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.75); }
+    #lightbox-content { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); max-width: 94%; max-height: 92%; padding: 12px; box-sizing: border-box; }
+    #lightbox-content img { display: block; max-width: 100%; max-height: 80vh; margin: 0 auto; border-radius: 6px; }
+    #lightbox-caption { color: #fff; text-align: center; margin-top: 8px; }
+    #lightbox-close { position: absolute; right: 6px; top: 6px; background: rgba(0,0,0,0.6); color: #fff; border: none; font-size: 22px; line-height: 1; padding: 6px 10px; border-radius: 4px; cursor: pointer; }
+    #lightbox-close:focus { outline: 2px solid #fff; }
   </style>
 </head>
 <body>
@@ -53,28 +62,38 @@
 
   <div class="curso-grid">
     <div class="curso-card">
-      <a href="assets/CURSO/CURSO_1.png" target="_blank" rel="noopener noreferrer"><img src="assets/CURSO/CURSO_1.png" alt="Curso 1"></a>
+      <a class="curso-lightbox" href="assets/CURSO/CURSO_1.png"><img src="assets/CURSO/CURSO_1.png" alt="Curso 1"></a>
       <div class="curso-title">Curso 1</div>
     </div>
 
     <div class="curso-card">
-      <a href="assets/CURSO/CURSO_2.png" target="_blank" rel="noopener noreferrer"><img src="assets/CURSO/CURSO_2.png" alt="Curso 2"></a>
+      <a class="curso-lightbox" href="assets/CURSO/CURSO_2.png"><img src="assets/CURSO/CURSO_2.png" alt="Curso 2"></a>
       <div class="curso-title">Curso 2</div>
     </div>
 
     <div class="curso-card">
-      <a href="assets/CURSO/CURSO_3.png" target="_blank" rel="noopener noreferrer"><img src="assets/CURSO/CURSO_3.png" alt="Curso 3"></a>
+      <a class="curso-lightbox" href="assets/CURSO/CURSO_3.png"><img src="assets/CURSO/CURSO_3.png" alt="Curso 3"></a>
       <div class="curso-title">Curso 3</div>
     </div>
 
     <div class="curso-card">
-      <a href="assets/CURSO/CURSO_4.png" target="_blank" rel="noopener noreferrer"><img src="assets/CURSO/CURSO_4.png" alt="Curso 4"></a>
+      <a class="curso-lightbox" href="assets/CURSO/CURSO_4.png"><img src="assets/CURSO/CURSO_4.png" alt="Curso 4"></a>
       <div class="curso-title">Curso 4</div>
     </div>
 
     <div class="curso-card">
-      <a href="assets/CURSO/CURSO_5.png" target="_blank" rel="noopener noreferrer"><img src="assets/CURSO/CURSO_5.png" alt="Curso 5"></a>
+      <a class="curso-lightbox" href="assets/CURSO/CURSO_5.png"><img src="assets/CURSO/CURSO_5.png" alt="Curso 5"></a>
       <div class="curso-title">Curso 5</div>
+    </div>
+  </div>
+
+  <!-- Lightbox / Modal -->
+  <div id="lightbox" aria-hidden="true">
+    <div id="lightbox-backdrop"></div>
+    <div id="lightbox-content" role="dialog" aria-modal="true">
+      <button id="lightbox-close" aria-label="Cerrar">×</button>
+      <img id="lightbox-image" src="" alt="" />
+      <div id="lightbox-caption"></div>
     </div>
   </div>
 
@@ -94,5 +113,43 @@
   </footer>
 
   <script src="assets/custom-scripts.js"></script>
+  <script>
+    // Lightbox behavior for curso page
+    (function(){
+      const links = document.querySelectorAll('.curso-lightbox');
+      const lightbox = document.getElementById('lightbox');
+      const lbImage = document.getElementById('lightbox-image');
+      const lbCaption = document.getElementById('lightbox-caption');
+      const lbClose = document.getElementById('lightbox-close');
+      const lbBackdrop = document.getElementById('lightbox-backdrop');
+
+      function openLightbox(href, alt){
+        lbImage.src = href;
+        lbImage.alt = alt || '';
+        lbCaption.textContent = alt || '';
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function closeLightbox(){
+        lightbox.setAttribute('aria-hidden','true');
+        lbImage.src = '';
+        document.body.style.overflow = '';
+      }
+
+      links.forEach(a => {
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          const href = a.getAttribute('href');
+          openLightbox(href, a.querySelector('img')?.alt);
+        });
+      });
+
+      lbClose.addEventListener('click', closeLightbox);
+      lbBackdrop.addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+    })();
+  </script>
 </body>
 </html>
