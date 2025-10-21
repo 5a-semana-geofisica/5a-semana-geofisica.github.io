@@ -345,9 +345,10 @@ section.topics-dates .dates td:not(.date) {
 /* Ensure each role line stacks and never squeezes into one line */
 .sponsors .sponsor .sponsor-role > div {
   display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Allow role lines to wrap onto multiple lines instead of truncating */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .organizers-section,
