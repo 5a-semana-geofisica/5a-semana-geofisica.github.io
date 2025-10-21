@@ -36,7 +36,69 @@
   </table>
 
     <h2>Programa de la Conferencia</h2>
-    Proximamente...
+
+    <section class="program-pdfs">
+      <p>Descarga o visualiza el programa completo y los programas por día a continuación:</p>
+      <ul>
+        <li><a href="assets/PROGRAMA/SEMANA_GEOFÍSICA-9.pdf" target="_blank" rel="noopener">Programa completo (PDF)</a></li>
+        <li><a href="assets/PROGRAMA/SEMANA_GEOFÍSICA-11.pdf" target="_blank" rel="noopener">Programa - Martes (PDF)</a></li>
+        <li><a href="assets/PROGRAMA/SEMANA_GEOFÍSICA-12.pdf" target="_blank" rel="noopener">Programa - Miércoles (PDF)</a></li>
+        <li><a href="assets/PROGRAMA/SEMANA_GEOFÍSICA-13.pdf" target="_blank" rel="noopener">Programa - Jueves (PDF)</a></li>
+        <li><a href="assets/PROGRAMA/SEMANA_GEOFÍSICA-14.pdf" target="_blank" rel="noopener">Programa - Viernes (PDF)</a></li>
+      </ul>
+
+      <div class="note">Selecciona un documento para verlo a pantalla completa dentro de la página. En móviles, puedes usar el botón de abrir en nueva pestaña.</div>
+      <div class="viewer-controls">
+        <button data-src="assets/PROGRAMA/SEMANA_GEOFÍSICA-9.pdf" class="active">Programa completo</button>
+        <button data-src="assets/PROGRAMA/SEMANA_GEOFÍSICA-11.pdf">Martes</button>
+        <button data-src="assets/PROGRAMA/SEMANA_GEOFÍSICA-12.pdf">Miércoles</button>
+        <button data-src="assets/PROGRAMA/SEMANA_GEOFÍSICA-13.pdf">Jueves</button>
+        <button data-src="assets/PROGRAMA/SEMANA_GEOFÍSICA-14.pdf">Viernes</button>
+        <a id="open-new" class="" href="assets/PROGRAMA/SEMANA_GEOFÍSICA-9.pdf" target="_blank" rel="noopener">Abrir en nueva pestaña</a>
+        <button id="fullscreen-btn">Pantalla completa</button>
+        <button id="close-viewer" title="Cerrar visor">Cerrar</button>
+      </div>
+
+      <iframe id="program-iframe" class="program-iframe" src="assets/PROGRAMA/SEMANA_GEOFÍSICA-9.pdf" title="Visor de programa PDF"></iframe>
+
+      <script>
+        (function(){
+          const buttons = document.querySelectorAll('.viewer-controls button[data-src]');
+          const iframe = document.getElementById('program-iframe');
+          const openNew = document.getElementById('open-new');
+          const closeBtn = document.getElementById('close-viewer');
+          function setActive(btn){
+            buttons.forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+          }
+          buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const src = btn.getAttribute('data-src');
+              iframe.src = src;
+              openNew.href = src;
+              setActive(btn);
+              // focus viewer and prevent page scroll
+              document.body.classList.add('viewer-active');
+              iframe.scrollIntoView({behavior:'smooth', block:'start'});
+            });
+          });
+          document.getElementById('fullscreen-btn').addEventListener('click', () => {
+            if (iframe.requestFullscreen) iframe.requestFullscreen();
+            else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
+            else if (iframe.msRequestFullscreen) iframe.msRequestFullscreen();
+          });
+          closeBtn.addEventListener('click', ()=>{
+            document.body.classList.remove('viewer-active');
+            // optionally reset to the top of the page
+            window.scrollTo({top:0, behavior:'smooth'});
+          });
+          // when iframe itself receives focus via keyboard, also disable body scroll
+          iframe.addEventListener('load', ()=>{
+            // keep viewer-active when loaded
+          });
+        })();
+      </script>
+    </section>
 
     <footer class="footer-enhanced">
       <div class="footer-content">

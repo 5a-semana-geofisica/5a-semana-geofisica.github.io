@@ -407,6 +407,46 @@ section.topics-dates .dates td:not(.date) {
   color: #dc2626;
 }
 
+/* PDF viewer for program page */
+.program-pdfs { max-width: 1100px; margin: 20px auto; padding: 0 16px; }
+.program-pdfs .viewer-controls { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+.program-pdfs .viewer-controls button, .program-pdfs .viewer-controls a { background:#fff; border:1px solid #e2e8f0; padding:8px 12px; border-radius:6px; cursor:pointer; color:#1f2937; text-decoration:none; }
+.program-pdfs .viewer-controls button:hover, .program-pdfs .viewer-controls a:hover { background:#f1f5f9; }
+
+/* Prominent day buttons */
+.program-pdfs .viewer-controls button[data-src] {
+  background: linear-gradient(180deg,#ef4444,#dc2626);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(220,38,38,0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+.program-pdfs .viewer-controls button[data-src]:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(220,38,38,0.22); }
+.program-pdfs .viewer-controls button[data-src].active { outline: 3px solid rgba(220,38,38,0.12); }
+
+.program-pdfs .viewer-controls a#open-new {
+  background: #fff; border: 1px solid #e2e8f0; color:#1f2937; padding:8px 12px; border-radius:8px; text-decoration:none; align-self:center;
+}
+.program-pdfs .viewer-controls button#fullscreen-btn,
+.program-pdfs .viewer-controls button#close-viewer {
+  background:#0f172a; color:#fff; border:none; padding:8px 12px; border-radius:8px; font-weight:600;
+}
+
+/* Make the iframe fill the viewport height so the PDF is visible vertically without page scroll */
+.program-pdfs .program-iframe { width:100%; height:calc(100vh - 160px); border:1px solid #e2e8f0; border-radius:8px; }
+
+/* When viewer is active, prevent the page from scrolling so wheel goes to the iframe */
+body.viewer-active { overflow: hidden; }
+
+@media (max-width: 800px) {
+  .program-pdfs .program-iframe { height: calc(100vh - 200px); }
+  .program-pdfs .viewer-controls { gap:6px; }
+}
+.program-pdfs .note { color:#475569; font-size:0.95em; margin-bottom:8px; }
+
 /* Responsive footer */
 @media (max-width: 768px) {
   .footer-enhanced {
