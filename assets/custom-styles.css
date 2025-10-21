@@ -311,6 +311,45 @@ section.topics-dates .dates td:not(.date) {
   flex-wrap: wrap;
 }
 
+/* Ensure sponsor tables used for organizers/committees display uniformly */
+.sponsors {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 24px 0;
+}
+.sponsors .sponsor {
+  vertical-align: top;
+  padding: 12px;
+  text-align: center;
+  width: auto;
+}
+.sponsors .sponsor img {
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.sponsors .sponsor .sponsor-name { margin-top: 8px; font-weight: 700; }
+.sponsors .sponsor .sponsor-email { margin-top: 4px; }
+.sponsors .sponsor .sponsor-role {
+  margin-top: 6px;
+  color: #475569;
+  font-size: 0.95em;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.25;
+  max-width: 220px;
+  padding: 0 8px;
+}
+
+/* Ensure each role line stacks and never squeezes into one line */
+.sponsors .sponsor .sponsor-role > div {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .organizers-section,
 .sponsors-section,
 .supporters-section {
