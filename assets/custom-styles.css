@@ -384,6 +384,18 @@ section.topics-dates .dates td:not(.date) {
   transition: transform 0.3s ease;
 }
 
+/* Ensure footer logos fit on one row on wider screens */
+@media (min-width: 900px) {
+  .footer-organization .logos-group {
+    flex-wrap: nowrap; /* keep in one line */
+    gap: 18px;
+  }
+  .footer-organization .logos-group img {
+    max-height: 56px;
+    max-width: 100px;
+  }
+}
+
 .logos-group img:hover {
   transform: scale(1.05);
 }
