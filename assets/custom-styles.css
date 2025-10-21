@@ -430,8 +430,7 @@ section.topics-dates .dates td:not(.date) {
 .program-pdfs .viewer-controls a#open-new {
   background: #fff; border: 1px solid #e2e8f0; color:#1f2937; padding:8px 12px; border-radius:8px; text-decoration:none; align-self:center;
 }
-.program-pdfs .viewer-controls button#fullscreen-btn,
-.program-pdfs .viewer-controls button#close-viewer {
+.program-pdfs .viewer-controls button#fullscreen-btn {
   background:#0f172a; color:#fff; border:none; padding:8px 12px; border-radius:8px; font-weight:600;
 }
 
