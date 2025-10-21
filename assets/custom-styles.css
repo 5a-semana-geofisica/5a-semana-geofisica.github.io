@@ -204,12 +204,11 @@ section.topics-dates .dates td:not(.date) {
   text-decoration: underline;
 }
 
-/* Make organizer images uniform size */
 .sponsors img {
   width: 150px !important;
   height: 150px !important;
-  object-fit: cover;
-  border-radius: 50%;
+  object-fit: contain;
+  border-radius: 12px;
   border: 3px solid #e2e8f0;
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
@@ -326,8 +325,8 @@ section.topics-dates .dates td:not(.date) {
 .sponsors .sponsor img {
   width: 120px !important;
   height: 120px !important;
-  object-fit: cover;
-  border-radius: 50%;
+  object-fit: contain;
+  border-radius: 10px;
 }
 .sponsors .sponsor .sponsor-name { margin-top: 8px; font-weight: 700; }
 .sponsors .sponsor .sponsor-email { margin-top: 4px; }
@@ -491,6 +490,25 @@ body.viewer-active { overflow: hidden; }
     margin: 5px;
   }
 }
+
+/* Zoomed rounded square for select sponsor photos to hide white borders */
+.sponsor-zoom {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 10px;
+  display: inline-block;
+  border: 3px solid #e2e8f0;
+  box-sizing: border-box;
+}
+.sponsor-zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill the box while preserving aspect */
+  transform: scale(1.25); /* increased zoom to better hide white edges */
+  display: block;
+}
+
 
 /* ===== JUSTIFICACIÓN GLOBAL DE TEXTOS ===== */
 /* Justificar todos los párrafos por defecto - Override main.css */
